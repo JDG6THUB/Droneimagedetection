@@ -27,7 +27,7 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     # Preprocess the image for the model
-    # The image size (256, 256) and normalization (dividing by 255) matching training pipeline.
+    # The image size (256, 256) and normalisation (dividing by 255) matching training pipeline.
     image_to_predict = image.resize((256, 256))
     image_to_predict = np.array(image_to_predict) / 255.0
     image_to_predict = np.expand_dims(image_to_predict, axis=0) # Add batch dimension
@@ -38,16 +38,16 @@ if uploaded_file is not None:
     
     # Display the prediction
     if is_person:
-        st.subheader("Prediction: Person detected! 🤔")
+        st.subheader("Prediction: Person detected!")
         st.write("Does this image actually contain a person?")
         if st.button("Yes, a person is present"):
-            st.success("Thanks for the feedback! Your selection matches the model's prediction.")
+            st.success("Your selection matches the model's prediction.")
         if st.button("No, there is no person"):
-            st.error("Thanks for the feedback! This was a False Positive.")
+            st.error("This was a False Positive.")
     else:
-        st.subheader("Prediction: No person detected. ✅")
+        st.subheader("Prediction: No person detected.")
         st.write("Does this image actually contain a person?")
         if st.button("Yes, a person is present"):
-            st.error("Thanks for the feedback! This was a False Negative.")
+            st.error("This was a False Negative.")
         if st.button("No, a person is not present"):
-            st.success("Thanks for the feedback! Your selection matches the model's prediction.")
+            st.success("Your selection matches the model's prediction.")
